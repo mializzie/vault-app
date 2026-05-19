@@ -4,7 +4,7 @@ A secure, client-side password manager built with React and the WebCrypto API. A
 
 ---
 
-## ✨ Features
+## Features
 
 - **AES-256-GCM encryption** — every credential field encrypted individually
 - **PBKDF2 key derivation** — 310,000 iterations with a unique random salt
@@ -22,7 +22,7 @@ A secure, client-side password manager built with React and the WebCrypto API. A
 
 ---
 
-## 🚀 Setup
+## Setup
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) v18 or higher
@@ -62,7 +62,7 @@ Or connect your GitHub repo at [vercel.com](https://vercel.com) for automatic de
 
 ---
 
-## 🔑 First Run
+## First Run
 
 1. You'll be prompted to **create a master password** (minimum 8 characters)
 2. A unique salt is generated and stored locally
@@ -73,7 +73,7 @@ Or connect your GitHub repo at [vercel.com](https://vercel.com) for automatic de
 
 ---
 
-## 🛡️ Encryption Flow
+## Encryption Flow
 
 ```
 Master Password + Random Salt (32 bytes)
@@ -105,7 +105,7 @@ each field    verification
 
 ---
 
-## 🧬 Biometric Fallback Behavior
+## Biometric Fallback Behavior
 
 ```
 User opens app
@@ -137,23 +137,7 @@ Biometric prompt shown
 
 ---
 
-## 📁 Project Structure
-
-```
-vault-app/
-├── .gitignore
-├── README.md
-├── index.html
-├── package.json
-├── vite.config.js
-└── src/
-    ├── main.jsx      # React entry point
-    └── App.jsx       # Entire application (crypto, UI, state)
-```
-
----
-
-## 🔒 Security Notes
+## Security Notes
 
 - This is a **client-side only** app — no server, no cloud sync, no telemetry
 - All data is stored in `localStorage` (simulating SQLite for web)
@@ -163,7 +147,7 @@ vault-app/
 
 ---
 
-## 🧪 Encryption Unit Tests
+## Encryption Unit Tests
 
 To run tests (if added):
 
@@ -179,7 +163,7 @@ Core logic to test lives in the `CryptoEngine` object in `src/App.jsx`:
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 | Package | Purpose |
 |---|---|
@@ -192,6 +176,6 @@ No third-party crypto libraries — encryption uses the native **WebCrypto API**
 
 ---
 
-## 📄 License
+## License
 
 MIT — free to use, modify, and distribute.
