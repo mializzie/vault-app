@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-// ─── WebAuthn Biometrics Engine ───────────────────────────────────────────────
+// WebAuthn Biometrics engine 
 const BiometricEngine = {
   isSupported() {
     return !!(window.PublicKeyCredential && navigator.credentials);
@@ -46,7 +46,7 @@ const BiometricEngine = {
     return credId;
   },
 
-  // Authenticate with biometric
+  // Authenticate with biometric(s) 
   async authenticate() {
     const storedCredId = localStorage.getItem("vault_cred_id");
     if (!storedCredId) throw new Error("No biometric registered");
@@ -75,7 +75,7 @@ const BiometricEngine = {
   },
 };
 
-// ─── Crypto Utilities (WebCrypto API) ─────────────────────────────────────────
+// Crypto Utilities (WebCrypto API) 
 const CryptoEngine = {
   async deriveMasterKey(password, salt) {
     const enc = new TextEncoder();
@@ -117,7 +117,7 @@ const CryptoEngine = {
   b64ToSalt(b64) { return Uint8Array.from(atob(b64), c => c.charCodeAt(0)); },
 };
 
-// ─── Password Generator ────────────────────────────────────────────────────────
+// Password Generator (in the case there is need)
 function generatePassword({ length = 16, upper = true, lower = true, numbers = true, symbols = true }) {
   const sets = [];
   if (upper) sets.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -130,7 +130,7 @@ function generatePassword({ length = 16, upper = true, lower = true, numbers = t
   return Array.from(arr).map(b => charset[b % charset.length]).join("");
 }
 
-// ─── Password Strength ────────────────────────────────────────────────────────
+// Password Strength 
 function getStrength(pw) {
   if (!pw) return { label: "", score: 0, color: "#333" };
   let s = 0;
@@ -145,15 +145,16 @@ function getStrength(pw) {
   return { label: "Strong", score: s, color: "#2ED573" };
 }
 
-// ─── Local DB (localStorage as SQLite stand-in) ───────────────────────────────
+// Local DB (localStorage as SQLite stand-in) 
 const MockDB = {
   get(key) { try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; } },
   set(key, val) { localStorage.setItem(key, JSON.stringify(val)); },
-  del(key) { localStorage.removeItem(key); },
+  del(key) {  Icon = ({ name, size = 20, color = "currentColor" }) => {
+    localStorage.removeItem(key); },
 };
 
 // ─── Icons ─────────────────────────────────────────────────────────────────────
-const Icon = ({ name, size = 20, color = "currentColor" }) => {
+const
   const paths = {
     lock: "M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2zM12 3a4 4 0 014 4v4H8V7a4 4 0 014-4z",
     eye: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z M12 9a3 3 0 100 6 3 3 0 000-6z",
@@ -186,10 +187,7 @@ const Icon = ({ name, size = 20, color = "currentColor" }) => {
     </svg>
   );
 };
-
-// ════════════════════════════════════════════════════════════════════════════════
-// MAIN APP
-// ════════════════════════════════════════════════════════════════════════════════
+//MAIN APP
 export default function PasswordVault() {
   const [screen, setScreen] = useState("splash");
   const [masterKey, setMasterKey] = useState(null);
